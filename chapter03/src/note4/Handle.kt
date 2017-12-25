@@ -31,6 +31,4 @@ fun main(args: Array<String>) {
   // 上面的to函数，返回一个Pair类型的对象，Pair是Kotlin标准库中的类
   val (number, name) = 1 to "One"
   // 上面的功能称为解构声明
-
-  // TODO 3.5
 }
