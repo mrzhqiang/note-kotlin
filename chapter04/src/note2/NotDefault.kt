@@ -10,6 +10,16 @@ fun main(args: Array<String>) {
 
   /* 4.2.3 实现在接口中声明的属性 */
 
+  /* 4.2.4 通过getter 或setter 访问支持字段 */
+  val sun = Sun("summer")
+  sun.address = "4096"
+
+  /* 4.2.5 修改访问器的可见性 */
+  val counter = LengthCounter()
+  counter.addWord("11111")
+  // 因为是私有的set，因此无法使用赋值语句在外面赋值
+//  counter.counter = 1
+  println(counter.counter)
 }
 
 // 声明一个简单类
@@ -96,4 +106,20 @@ class Dusk(accountId: Int) : Smith {
   fun getDuskName(id: Int) = id.toString()
 }
 
-// 关于属性的概念有点奇怪，加上临近下班，所以暂时到这里为止
+// 在setter中访问支持字段
+class Sun(val name: String){
+  var address: String = "unspecified"
+  set(value) {
+    println(""" Address was changed for $name: "$field" -> "$value".""".trimIndent())
+    field = value
+  }
+}
+
+class LengthCounter {
+  var counter: Int = 0
+  private set
+
+  fun addWord(word: String) {
+    counter += word.length
+  }
+}
